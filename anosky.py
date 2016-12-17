@@ -3,6 +3,11 @@
 import requests
 
 url = "http://www.ntv.co.jp/anothersky/"
+html_body = """
+<html><body>
+%s
+</body></html>
+"""
 
 def FindGuestContent():
     r = requests.get(url)
@@ -24,4 +29,5 @@ def FindGuestContent():
 
 if __name__ == "__main__":
         result =  FindGuestContent()
-        print result
+        print "Content-type : text/html\n"
+        print html_body % (result)
